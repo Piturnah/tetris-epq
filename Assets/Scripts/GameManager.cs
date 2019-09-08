@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool gameActive;
+
     public static float horizontalInput = 0;
     public static float verticalInput = 0;
     public static float rotateInput = 0;
@@ -15,9 +17,16 @@ public class GameManager : MonoBehaviour
     float previousFallTime;
     float fallDelay = 1f;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     private void Update()
     {
-        DetectInput();
+        if (gameActive)
+        {
+            DetectInput();
+        }
     }
     void DetectInput()
     {
