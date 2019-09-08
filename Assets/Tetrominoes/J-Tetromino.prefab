@@ -390,3 +390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1deba0a185bd54bb5dead131548712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pallete:
+  - {fileID: 2100000, guid: 56d307cd14c8d4c43833441fd0e617c8, type: 2}
+  - {fileID: 2100000, guid: c495059e62512d544bb8e7427db599bf, type: 2}
+  - {fileID: 2100000, guid: 9b85db0d06aacec4298514ade5be1c0a, type: 2}
+  - {fileID: 2100000, guid: 15415144ca7d0404a93e9682138d62ef, type: 2}
+  - {fileID: 2100000, guid: 06a90e7556fa0264f9edf915e3a118dd, type: 2}
+  - {fileID: 2100000, guid: 18a5f2b515bd934449337632e99fa44b, type: 2}
+  - {fileID: 2100000, guid: 65c9fc8e43308274fa17847b62c10a4a, type: 2}
+  - {fileID: 2100000, guid: 611322ee70b290a439396fcf9e6aa2bd, type: 2}
+  - {fileID: 2100000, guid: 74390894a33a94248bfc536d2a02e6ee, type: 2}
+  - {fileID: 2100000, guid: a4f53ed3ef41ab44980b70a2efc2b48e, type: 2}

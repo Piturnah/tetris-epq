@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
+    [SerializeField] Material[] pallete;
+
     float previousFallTime;
-    float fallDelay = 1;
+    float fallDelay = 48f/60f;
     float previousMoveTime;
     float moveDelay = 0.13f;
 
@@ -14,6 +16,12 @@ public class Tetromino : MonoBehaviour
 
     public static Transform[,] colliders = new Transform[width, height];
 
+    int softScore;
+
+    private void Start()
+    {
+        DetermineDelay();
+    }
     void Update()
     {
         Move();
@@ -49,19 +57,44 @@ public class Tetromino : MonoBehaviour
         if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? fallDelay / 10 : fallDelay))
         {
             transform.position += Vector3.down;
+            if (GameManager.verticalInput == -1)
+            {
+                softScore += 1;
+                if (!ValidMove())
+                {
+                    softScore -= 1;
+                }
+            }
             if (!ValidMove())
             {
+                ScoreManager.score += softScore;
                 transform.position += Vector3.up;
                 AddSelfToColliders();
-                CheckForLines();
+                int lines = CheckForLines();
+                switch (lines)
+                {
+                    case 1:
+                        ScoreManager.score += 40 * (ScoreManager.level + 1);
+                        break;
+                    case 2:
+                        ScoreManager.score += 100 * (ScoreManager.level + 1);
+                        break;
+                    case 3:
+                        ScoreManager.score += 300 * (ScoreManager.level + 1);
+                        break;
+                    case 4:
+                        ScoreManager.score += 12000 * (ScoreManager.level + 1);
+                        break;
+                }
                 this.enabled = false;
                 FindObjectOfType<SpawnManager>().SpawnTetromino();
             }
             previousFallTime = Time.time;
         }
     }
-    void CheckForLines()
+    int CheckForLines()
     {
+        int lines = 0;
         for (int y = height - 1; y >= 0; y--)
         {
             if (CheckRow(y))
@@ -72,8 +105,11 @@ public class Tetromino : MonoBehaviour
                     colliders[x, y] = null;
                 }
                 Fall(y);
+                ScoreManager.lines += 1;
+                lines += 1;
             }
         }
+        return lines;
     }
     bool CheckRow(int y)
     {
@@ -136,5 +172,72 @@ public class Tetromino : MonoBehaviour
         }
 
         return true;
+    }
+    void DetermineDelay()
+    {
+        switch (ScoreManager.level)
+        {
+            
+            case 0:
+                fallDelay = 48f / 60f;
+                break;
+            case 1:
+                fallDelay = 43f / 60f;
+                break;
+            case 2:
+                fallDelay = 38f / 60f;
+                break;
+            case 3:
+                fallDelay = 33f / 60f;
+                break;
+            case 4:
+                fallDelay = 28f / 60f;
+                break;
+            case 5:
+                fallDelay = 23f / 60f;
+                break;
+            case 6:
+                fallDelay = 18f / 60f;
+                break;
+            case 7:
+                fallDelay = 13f / 60f;
+                break;
+            case 8:
+                fallDelay = 8f / 60f;
+                break;
+            case 9:
+                fallDelay = 6f / 60f;
+                break;
+            case 10:
+            case 11:
+            case 12:
+                fallDelay = 5f / 60f;
+                break;
+            case 13:
+            case 14:
+            case 15:
+                fallDelay = 4f / 60f;
+                break;
+            case 16:
+            case 17:
+            case 18:
+                fallDelay = 3f / 60f;
+                break;
+            case 19:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+                fallDelay = 2f / 60f;
+                break;
+            default:
+                fallDelay = 1f / 60f;
+                break;
+        }
     }
 }
