@@ -9,7 +9,7 @@ public class Tetromino : MonoBehaviour
     float previousFallTime;
     float fallDelay = 48f/60f;
     float previousMoveTime;
-    float moveDelay = 0.13f;
+    float moveDelay = 6f/60f;
 
     public static int height = 20;
     public static int width = 10;

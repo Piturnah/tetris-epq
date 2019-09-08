@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    int startingLevel = 0;
+    int startingLevel = 5;
 
     public static int score;
     public static int lines;
