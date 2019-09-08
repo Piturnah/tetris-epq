@@ -54,7 +54,7 @@ public class Tetromino : MonoBehaviour
             previousMoveTime = Time.time;
         }
             
-        if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? fallDelay / 10 : fallDelay))
+        if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? fallDelay / 2 : fallDelay))
         {
             transform.position += Vector3.down;
             if (GameManager.verticalInput == -1)

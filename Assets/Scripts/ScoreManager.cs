@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    int startingLevel = 0;
+
     public static int score;
     public static int lines;
     public static int level;
@@ -16,6 +18,10 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text linesText;
     [SerializeField] Text levelText;
 
+    private void Start()
+    {
+        level = startingLevel;
+    }
     private void Update()
     {
         scoreText.text = "top\n" + topScore.ToString("000000000") + "\n\nscore\n" + score.ToString("000000000");

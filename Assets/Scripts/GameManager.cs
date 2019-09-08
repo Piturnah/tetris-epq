@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool gameActive;
-
     public static float horizontalInput = 0;
     public static float verticalInput = 0;
     public static float rotateInput = 0;
@@ -23,10 +21,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (gameActive)
-        {
-            DetectInput();
-        }
+        DetectInput();
     }
     void DetectInput()
     {
