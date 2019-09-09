@@ -4,8 +4,8 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
-Assets/Materials/Tetrominoes/JS/JS_11
-Assets/Materials/Tetrominoes/ZL/ZL_11
+Assets/Materials/Tetrominoes/JS/JS_11.mat
+Assets/Materials/Tetrominoes/ZL/ZL_11.mat
 
 # Visual Studio cache directory
 .vs/

@@ -9,7 +9,6 @@ public class StatBars : MonoBehaviour
 
     public void UpdateBars()
     {
-        Debug.Log("updating bars");
         foreach (Image bar in bars)
         {
             float tetrominoCount = 0;
