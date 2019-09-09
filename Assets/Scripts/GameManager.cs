@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static Tetrominoes tetros = new Tetrominoes();
+    public static int startLevel = 0;
 
     public static float horizontalInput = 0;
     public static float verticalInput = 0;
@@ -17,10 +19,22 @@ public class GameManager : MonoBehaviour
     float previousFallTime;
     float fallDelay = 1f;
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(2);
+
+        ScoreManager.startLevel = startLevel;
+        ScoreManager.level = startLevel;
+        GameObject other = FindObjectOfType<GameManager>().gameObject;
+        if (other != null)
+        {
+            Destroy(other);
+        }
+    }
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        StartGame();
+        tetros.ResetCounters();
     }
     private void Update()
     {
@@ -39,10 +53,6 @@ public class GameManager : MonoBehaviour
         {
             rotationAxis = Input.GetAxisRaw("Rotate");
         }
-    }
-    public static void StartGame()
-    {
-        tetros.ResetCounters();
     }
     public struct Tetrominoes
     {
