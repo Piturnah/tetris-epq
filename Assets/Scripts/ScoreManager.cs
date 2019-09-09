@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public static int lines;
     public static int level;
     int topScore;
-    int startLevel;
+    public static int startLevel;
     int previousLines;
 
     [SerializeField] Text scoreText;
