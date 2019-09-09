@@ -1,0 +1,5 @@
+TODO
+
+Fix soft-drop rate + scoring
+Implement game over
+Implement DAS + hypertapping
