@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 611322ee70b290a439396fcf9e6aa2bd, type: 2}
   - {fileID: 2100000, guid: 74390894a33a94248bfc536d2a02e6ee, type: 2}
   - {fileID: 2100000, guid: a4f53ed3ef41ab44980b70a2efc2b48e, type: 2}
-  - {fileID: 2100000, guid: d5ffd9dcc55936746bc6d5171635b290, type: 2}
+  - {fileID: 2100000, guid: c2e798e4656cc421eafef781c5631a15, type: 2}
   palletZL:
   - {fileID: 2100000, guid: e4eb50cb10e38214fa72ca08bc6739bc, type: 2}
   - {fileID: 2100000, guid: 1e5b326a4c84a06418cc073a9d6f16b6, type: 2}
@@ -79,4 +79,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4a2c7e8927dc4c746bb45f0e0165d5f6, type: 2}
   - {fileID: 2100000, guid: 04929a934b4f4b142a049b1f13934053, type: 2}
   - {fileID: 2100000, guid: 7350010e2e7ff8d42b7b8d33ef125a85, type: 2}
-  - {fileID: 2100000, guid: 882c60b3d455b114fa7a5c51e8193a6e, type: 2}
+  - {fileID: 2100000, guid: 846322ffb0fc54f67ae26023d79ca7fb, type: 2}

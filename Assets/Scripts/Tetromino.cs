@@ -17,7 +17,7 @@ public class Tetromino : MonoBehaviour
     public static Transform[,] colliders = new Transform[width, height];
 
     int softScore;
-
+    
     private void Start()
     {
         DetermineDelay();
