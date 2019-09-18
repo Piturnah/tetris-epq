@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,15 +20,34 @@ public class GameManager : MonoBehaviour
     float previousFallTime;
     float fallDelay = 1f;
 
+    public static event Action startGame;
+
     public static bool gameRuning = false;
 
     public void StartGame()
     {
+        if (startGame != null)
+        {
+            startGame();
+        }
+        Tetromino.deathEvent += OnPlayerDeath;
+
         gameRuning = true;
         SceneManager.LoadScene(2);
 
         ScoreManager.startLevel = startLevel;
         ScoreManager.level = startLevel;
+        ScoreManager.score = 0;
+
+        GameObject other = FindObjectOfType<GameManager>().gameObject;
+        if (other != null)
+        {
+            Destroy(other);
+        }
+    }
+    private void OnPlayerDeath()
+    {
+        SceneManager.LoadScene(1);
         GameObject other = FindObjectOfType<GameManager>().gameObject;
         if (other != null)
         {

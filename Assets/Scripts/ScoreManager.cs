@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class ScoreManager : MonoBehaviour
             level++;
             previousLines = lines;
         }
-        if (lines - previousLines >= 10)
+        if (lines - previousLines >= 10 && level != startLevel)
         {
             level++;
             previousLines = lines;

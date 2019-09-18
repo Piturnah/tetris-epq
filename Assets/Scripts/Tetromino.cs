@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Tetromino : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Tetromino : MonoBehaviour
 
     public static int height = 20;
     public static int width = 10;
+
+    public static event Action deathEvent;
 
     public static Transform[,] colliders = new Transform[width, height];
 
@@ -69,6 +72,10 @@ public class Tetromino : MonoBehaviour
             {
                 if (transform.position.y >= 18)
                 {
+                    if (deathEvent != null)
+                    {
+                        deathEvent();
+                    }
                     GameManager.gameRuning = false;
                 }
                 ScoreManager.score += softScore;
