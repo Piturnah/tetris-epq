@@ -2286,16 +2286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2093631494077988786, guid: fc938e166c13ee145babb351019b05e2,
-        type: 3}
-      propertyPath: palletJS.Array.data[10]
-      value: 
-      objectReference: {fileID: 2100000, guid: c2e798e4656cc421eafef781c5631a15, type: 2}
-    - target: {fileID: 2093631494077988786, guid: fc938e166c13ee145babb351019b05e2,
-        type: 3}
-      propertyPath: palletZL.Array.data[10]
-      value: 
-      objectReference: {fileID: 2100000, guid: 846322ffb0fc54f67ae26023d79ca7fb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc938e166c13ee145babb351019b05e2, type: 3}
 --- !u!1 &1507590077

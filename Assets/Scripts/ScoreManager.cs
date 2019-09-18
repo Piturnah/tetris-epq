@@ -26,7 +26,12 @@ public class ScoreManager : MonoBehaviour
         {
             topScore = score;
         }
-        if (lines - previousLines >= startLevel * 10 + 10 || lines - previousLines >= Mathf.Max(100,startLevel*10-50))
+        if (lines - previousLines >= startLevel * 10 + 10 || lines - previousLines >= Mathf.Max(100,startLevel*10-50) && level == startLevel)
+        {
+            level++;
+            previousLines = lines;
+        }
+        if (lines - previousLines >= 10)
         {
             level++;
             previousLines = lines;

@@ -54,7 +54,7 @@ public class Tetromino : MonoBehaviour
             previousMoveTime = Time.time;
         }
             
-        if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? fallDelay / 2 : fallDelay))
+        if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? 2f/60f : fallDelay))
         {
             transform.position += Vector3.down;
             if (GameManager.verticalInput == -1)
@@ -67,6 +67,10 @@ public class Tetromino : MonoBehaviour
             }
             if (!ValidMove())
             {
+                if (transform.position.y >= 18)
+                {
+                    GameManager.gameRuning = false;
+                }
                 ScoreManager.score += softScore;
                 transform.position += Vector3.up;
                 AddSelfToColliders();

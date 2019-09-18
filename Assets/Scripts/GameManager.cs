@@ -19,8 +19,11 @@ public class GameManager : MonoBehaviour
     float previousFallTime;
     float fallDelay = 1f;
 
+    public static bool gameRuning = false;
+
     public void StartGame()
     {
+        gameRuning = true;
         SceneManager.LoadScene(2);
 
         ScoreManager.startLevel = startLevel;
