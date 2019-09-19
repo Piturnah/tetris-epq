@@ -16,34 +16,36 @@ public class KeyPresses : MonoBehaviour
     }
     private void Update()
     {
+        //Change colour for left and right input
         if (GameManager.horizontalAxis == -1)
         {
-            keys[2].color = Color.grey;
+            keys[2].color = Color.red;
         } else if (GameManager.horizontalAxis == 1)
         {
-            keys[4].color = Color.grey;
+            keys[4].color = Color.red;
         } else
         {
             keys[2].color = Color.white;
             keys[4].color = Color.white;
         }
 
-
+        //Change colour for down input
         if (GameManager.verticalInput == -1)
         {
-            keys[3].color = Color.grey;
+            keys[3].color = Color.red;
         }
         else
         {
             keys[3].color = Color.white;
         }
 
+        //Change colour for rotation input
         if (GameManager.rotationAxis == 1)
         {
-            keys[1].color = Color.grey;
+            keys[1].color = Color.red;
         } else if (GameManager.rotationAxis == -1)
         {
-            keys[0].color = Color.grey;
+            keys[0].color = Color.red;
         } else
         {
             keys[0].color = Color.white;

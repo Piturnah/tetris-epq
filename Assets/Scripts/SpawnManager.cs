@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnTetromino()
     {
-        if (GameManager.gameRuning)
+        if (GameManager.gameRunning)
         {
             Instantiate(nextTetromino, transform.position, transform.rotation, transform);
             switch (nextTetromino.name)

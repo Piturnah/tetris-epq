@@ -11,6 +11,7 @@ public class StatBars : MonoBehaviour
     {
         foreach (Image bar in bars)
         {
+            //Set the fill amount of each bar to the ratio of dropped tetronimoes
             float tetrominoCount = 0;
             switch (bar.transform.GetSiblingIndex())
             {
@@ -41,6 +42,7 @@ public class StatBars : MonoBehaviour
     }
     private void Awake()
     {
+        //Get references to all the stat bar images under this GameObject transform
         foreach (Transform child in transform)
         {
             bars[child.GetSiblingIndex()] = child.GetComponent<Image>();

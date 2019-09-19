@@ -27,9 +27,11 @@ public class Tetromino : MonoBehaviour
     }
     void Update()
     {
+        //Update the tetronimo's position and rotation each frame
         Move();
         Rotate();
     }
+    //Rotate the tetronimo according to input
     void Rotate()
     {
         Vector3 pivot = transform.GetChild(0).transform.position;
@@ -45,10 +47,13 @@ public class Tetromino : MonoBehaviour
             }
         }
     }
+    //Move the tetronimo horizontally, + softdropping, according to input
     void Move()
     {
+        //Check if the tetronimo should be able to move horizontally yet
         if (Time.time - previousMoveTime >= moveDelay)
         {
+            //If it is, check if receiving horizontal input
             transform.position += new Vector3(GameManager.horizontalAxis, 0, 0);
             if (!ValidMove())
             {
@@ -56,7 +61,8 @@ public class Tetromino : MonoBehaviour
             }
             previousMoveTime = Time.time;
         }
-            
+
+        //Check if tetronimo should fall yet and handle that
         if (Time.time - previousFallTime >= ((GameManager.verticalInput == -1) ? 2f/60f : fallDelay))
         {
             transform.position += Vector3.down;
@@ -68,16 +74,19 @@ public class Tetromino : MonoBehaviour
                     softScore -= 1;
                 }
             }
+            //Check if tetronimo has landed on a surface
             if (!ValidMove())
             {
+                //If the tetronimo is at the top of the board, end the game
                 if (transform.position.y >= 18)
                 {
                     if (deathEvent != null)
                     {
                         deathEvent();
                     }
-                    GameManager.gameRuning = false;
+                    GameManager.gameRunning = false;
                 }
+                //Deal with scoring and add the tetronimo's colliders
                 ScoreManager.score += softScore;
                 transform.position += Vector3.up;
                 AddSelfToColliders();
@@ -184,6 +193,7 @@ public class Tetromino : MonoBehaviour
 
         return true;
     }
+    //Set the falling speed of the tetronimo
     void DetermineDelay()
     {
         switch (ScoreManager.level)
