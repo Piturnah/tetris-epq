@@ -16,11 +16,18 @@ public class Tetromino : MonoBehaviour
     public static int width = 10;
 
     public static event Action deathEvent;
+    public static event Action<int> updateScore;
+    public static event Action updateLines;
 
     public static Transform[,] colliders = new Transform[width, height];
 
     int softScore;
     
+    public static void ResetActions()
+    {
+        updateScore = null;
+        updateLines = null;
+    }
     private void Start()
     {
         DetermineDelay();
@@ -87,24 +94,28 @@ public class Tetromino : MonoBehaviour
                     GameManager.gameRunning = false;
                 }
                 //Deal with scoring and add the tetronimo's colliders
-                ScoreManager.score += softScore;
                 transform.position += Vector3.up;
                 AddSelfToColliders();
                 int lines = CheckForLines();
+                int addScore = softScore;
                 switch (lines)
                 {
                     case 1:
-                        ScoreManager.score += 40 * (ScoreManager.level + 1);
+                        addScore = 40;
                         break;
                     case 2:
-                        ScoreManager.score += 100 * (ScoreManager.level + 1);
+                        addScore = 100;
                         break;
                     case 3:
-                        ScoreManager.score += 300 * (ScoreManager.level + 1);
+                        addScore = 300;
                         break;
                     case 4:
-                        ScoreManager.score += 12000 * (ScoreManager.level + 1);
+                        addScore = 1200;
                         break;
+                }
+                if (updateScore != null)
+                {
+                    updateScore(addScore);
                 }
                 this.enabled = false;
                 FindObjectOfType<SpawnManager>().SpawnTetromino();
@@ -125,7 +136,10 @@ public class Tetromino : MonoBehaviour
                     colliders[x, y] = null;
                 }
                 Fall(y);
-                ScoreManager.lines += 1;
+                if (updateLines != null)
+                {
+                    updateLines();
+                }
                 lines += 1;
             }
         }

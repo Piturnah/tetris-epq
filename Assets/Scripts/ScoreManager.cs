@@ -17,20 +17,17 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] Text linesText;
     [SerializeField] Text levelText;
 
-    private void Update()
+    private void Awake()
     {
-        //Write stats to the screen
-        scoreText.text = "top\n" + topScore.ToString("000000000") + "\n\nscore\n" + score.ToString("000000000");
-        linesText.text = "lines - " + lines.ToString("000");
-        levelText.text = "level\n " + level.ToString("00");
-
-        if (score > topScore)
-        {
-            topScore = score;
-            GameManager.topScore = topScore;
-        }
+        Tetromino.ResetActions();
+        Tetromino.updateScore += UpdateScore;
+        Tetromino.updateLines += UpdateLines;
+    }
+    void UpdateLines()
+    {
+        lines ++;
         //Check if levelled up for starting level
-        if (lines - previousLines >= startLevel * 10 + 10 || lines - previousLines >= Mathf.Max(100,startLevel*10-50) && level == startLevel)
+        if (lines - previousLines >= startLevel * 10 + 10 || lines - previousLines >= Mathf.Max(100, startLevel * 10 - 50) && level == startLevel)
         {
             level++;
             previousLines = lines;
@@ -41,5 +38,22 @@ public class ScoreManager : MonoBehaviour
             level++;
             previousLines = lines;
         }
+    }
+    void UpdateScore(int addScore)
+    {
+        score += addScore * (level + 1);
+        if (score > topScore)
+        {
+            topScore = score;
+            GameManager.topScore = topScore;
+        }
+        UpdateText();
+    }
+    void UpdateText()
+    {
+        //Write stats to the screen
+        scoreText.text = "top\n" + topScore.ToString("000000000") + "\n\nscore\n" + score.ToString("000000000");
+        linesText.text = "lines - " + lines.ToString("000");
+        levelText.text = "level\n " + level.ToString("00");
     }
 }
